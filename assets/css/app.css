@@ -1,0 +1,13 @@
+/* This file is for your main application css. */
+
+@import "./phoenix.css";
+@import "./spectre.min.css";
+
+/* Specific components style */
+@import "./components/sessions.css";
+@import "./components/home.css";
+@import "./components/thumbnails.css";
+
+#content {
+    margin-top: 60px;
+}

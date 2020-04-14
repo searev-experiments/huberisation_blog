@@ -1,0 +1,49 @@
+<%= if length(@articles) > 0 do %>
+<section id="headline">
+    <% top_article = hd(@articles) %>
+
+    <img src="<%= top_article.vignette %>" alt="" class="img-fit-cover">
+    <div id="headline-card" class="card">
+        <div class="card-header">
+            <a href="<%= Routes.article_path(@conn, :show, top_article) %>">
+                <h4><%= top_article.title %></h4>
+            </a>
+        </div>
+        <div class="card-body">
+            <%= top_article.epigraph %>
+        </div>
+    </div>
+</section>
+
+<section id="last-articles">
+    <h3>Derniers articles</h3>
+    <div class="flex">
+        <%= for article <- tl(@articles) do %>
+        <div class="card article-thumbnail">
+            <div class="card-image">
+                <img src="<%= article.vignette %>" alt="" class="img-responsive">
+            </div>
+            <div class="card-body">
+                <a href="<%= Routes.article_path(@conn, :show, top_article) %>">
+                    <h5><%= article.title %></h5>
+                </a>
+                <%= article.epigraph %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+
+</section>
+<% else %>
+
+    <div class="empty">
+        <div class="empty-title h3">
+            Aucun article n'a été publié pour le moment
+        </div>
+        <div class="empty-action">
+            <%= link "Publier un article", to: Routes.article_path(@conn, :new), class: "btn btn-primary" %>
+        </div>
+    </div>
+
+<% end %>
+

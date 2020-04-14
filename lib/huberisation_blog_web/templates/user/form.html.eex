@@ -1,0 +1,53 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Une erreur s'est produite.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :full_name, "Nom et prénom", class: "form-label" %>
+    <%= text_input f, :full_name, class: "form-input" %>
+    <%= error_tag f, :full_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :username, "Nom d'utilisateur", class: "form-label" %>
+    <%= text_input f, :username, class: "form-input" %>
+    <%= error_tag f, :username %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :email, class: "form-label" %>
+    <%= text_input f, :email, class: "form-input" %>
+    <%= error_tag f, :email %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :password, "Mot de passe", class: "form-label" %>
+    <%= password_input f, :password, class: "form-input" %>
+    <%= error_tag f, :password %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :password_confirmation, "Confirmez le mot de passe", class: "form-label" %>
+    <%= password_input f, :password_confirmation, class: "form-input" %>
+    <%= error_tag f, :password_confirmation %>
+  </div>
+
+  <div class="form-group d-none">
+    <%= label f, :bio, class: "form-label" %>
+    <%= textarea f, :bio, class: "form-input" %>
+    <%= error_tag f, :bio %>
+  </div>
+
+  <div class="form-group  d-none">
+    <%= label f, :is_admin, class: "form-checkbox" %>
+    <%= checkbox f, :is_admin %>
+    <%= error_tag f, :is_admin %>
+  </div>
+
+  <div>
+    <%= submit "Save", class: "btn btn-primary form-input" %>
+  </div>
+<% end %>

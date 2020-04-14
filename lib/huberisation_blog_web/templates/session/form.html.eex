@@ -1,0 +1,26 @@
+<%= form_for @changeset, @action, fn f -> %>
+<%= if f.errors != [] do %>
+<div class="alert alert-danger">
+    <p>Oops, something went wrong! Please check the errors below:</p>
+    <ul>
+        <%= for {attr, message} <- f.errors do %>
+        <li><%= humanize(attr) %> <%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+    <%= label f, :username, class: "form-label" %>
+    <%= text_input f, :username, class: "form-input" %>
+</div>
+
+<div class="form-group">
+    <%= label f, :password, class: "form-label" %>
+    <%= password_input f, :password, class: "form-input" %>
+</div>
+
+<div class="form-group">
+    <%= submit "Connexion", class: "btn btn-primary form-input" %>
+</div>
+<% end %>

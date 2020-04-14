@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= assigns[:page_title] || "Huberisation" %></title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <%= csrf_meta_tag() %>
+  </head>
+  <body>
+    <nav class="navbar p-2 p-sticky">
+      <section class="navbar-section">
+        <a href="/" class="navbar-brand ml-2">Huberisation</a>
+      </section>
+      <section class="navbar-section">
+        <a href="/articles" class="btn btn-link mr-2">Articles</a>
+        <a href="/articles" class="btn btn-link mr-2">Projets</a>
+        <a href="/articles" class="btn btn-link mr-2">A Propos</a>
+        <%= if user = current_user(@conn) do %>
+          <%= link "Déconnexion", to: Routes.session_path(@conn, :delete), class: "btn" %>
+        <% else %>
+          <%= link "Connexion", to: Routes.session_path(@conn, :new), class: "btn" %>
+        <% end %>
+      </section>
+    </nav>
+    <main role="main" class="container" id="content">
+      <%= if get_flash(@conn, :info) do %>
+        <p class="toast toast-success mt-2" role="alert" id="alert-info">
+          <%= get_flash(@conn, :info) %>
+          <button class="btn btn-clear float-right" onclick="hideInfoToast()"></button>
+        </p>
+      <% end %>
+
+      <%= if get_flash(@conn, :error) do %>
+        <p class="toast toast-error mt-2" role="alert" id="alert-error">
+          <%= get_flash(@conn, :error) %>
+          <button class="btn btn-clear float-right" onclick="hideAlertToast()"></button>
+        </p>
+      <% end %>
+      <%= render @view_module, @view_template, assigns %>
+    </main>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script type="text/javascript">
+    function hideInfoToast() {
+      hide(document.getElementById("alert-info"))
+    }
+
+    function hideAlertToast() {
+      hide(document.getElementById("alert-error"))
+    }
+
+    function hide(element) {
+      element.classList.add("d-none")
+    }
+    </script>
+  </body>
+</html>

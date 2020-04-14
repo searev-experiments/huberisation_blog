@@ -1,0 +1,15 @@
+<div class="card login-card mt-2 p-centered">
+    <div class="card-header">
+        <h2>Nouveau compte</h2>
+    </div>
+
+    <div class="card-body">
+        <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
+    </div>
+</div>
+
+<div class="card login-card mt-2 p-centered">
+    <div class="card-body">
+        <%= link "Connexion", to: Routes.session_path(@conn, :new) %>
+    </div>
+</div>
