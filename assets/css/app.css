@@ -7,6 +7,7 @@
 @import "./components/sessions.css";
 @import "./components/home.css";
 @import "./components/thumbnails.css";
+@import "./components/article.css";
 
 #content {
     margin-top: 60px;

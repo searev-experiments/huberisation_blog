@@ -1,35 +1,39 @@
-<h1>Show Article</h1>
+<header id="article-header">
+  <img src="<%= @article.vignette %>" alt="">
+  <div id="headline-card" class="card">
+    <div class="card-header">
+      <h4><%= @article.title %></h4>
+    </div>
+    <div class="card-body">
+      <%= @article.epigraph %>
+    </div>
+  </div>
+</header>
 
-<img src="<%= @article.vignette %>" alt="">
+<div id="article-content">
 
-<ul>
+  <div id="side">
+    <ul>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @article.title %>
-  </li>
+      <li>
+        <strong>Sources:</strong>
+        <%= @article.sources %>
+      </li>
 
-  <li>
-    <strong>Epigraph:</strong>
-    <%= @article.epigraph %>
-  </li>
+      <li>
+        <strong>Links:</strong>
+        <%= @article.links %>
+      </li>
 
-  <li>
-    <strong>Content:</strong>
+    </ul>
+  </div>
+
+  <section id="main">
     <%= @article.content %>
-  </li>
+  </section>
 
-  <li>
-    <strong>Sources:</strong>
-    <%= @article.sources %>
-  </li>
+</div>
 
-  <li>
-    <strong>Links:</strong>
-    <%= @article.links %>
-  </li>
-
-</ul>
 
 <span><%= link "Edit", to: Routes.article_path(@conn, :edit, @article) %></span>
 <span><%= link "Back", to: Routes.article_path(@conn, :index) %></span>
