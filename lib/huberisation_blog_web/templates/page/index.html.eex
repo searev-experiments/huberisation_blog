@@ -1,3 +1,4 @@
+<div id="home">
 <%= if length(@articles) > 0 do %>
 <section id="headline">
     <% top_article = hd(@articles) %>
@@ -15,10 +16,13 @@
     </div>
 </section>
 
-<section id="last-articles">
+
+<section id="last-articles" class="container">
+    <% latest_articles = tl(@articles) %>
+    <%= if length(latest_articles) > 0 do %>
     <h3>Derniers articles</h3>
     <div class="flex">
-        <%= for article <- tl(@articles) do %>
+        <%= for article <- latest_articles do %>
         <div class="card article-thumbnail">
             <div class="card-image">
                 <img src="<%= article.vignette %>" alt="" class="img-responsive">
@@ -32,8 +36,10 @@
         </div>
         <% end %>
     </div>
+    <% end %>
 
 </section>
+
 <% else %>
 
     <div class="empty">
@@ -47,3 +53,4 @@
 
 <% end %>
 
+</div>

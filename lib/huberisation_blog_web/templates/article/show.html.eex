@@ -13,23 +13,31 @@
 <div id="article-content">
 
   <div id="side">
-    <ul>
+    <%= if length(@article.sources) > 0 do %>
+    <div>
+        <span>Sources :</span>
+            <ul>
+            <%= for source <- @article.sources do %>
+                <li><%= source %></li>
+            <% end %>
+            </ul>
+    </div>
+    <% end %>
 
-      <li>
-        <strong>Sources:</strong>
-        <%= @article.sources %>
-      </li>
-
-      <li>
-        <strong>Links:</strong>
-        <%= @article.links %>
-      </li>
-
-    </ul>
+    <%= if length(@article.links) > 0 do %>
+    <div>
+        <span>Liens :</span>
+            <ul>
+            <%= for link <- @article.links do %>
+                <li><%= link %></li>
+            <% end %>
+            </ul>
+    </div>
+    <% end %>
   </div>
 
   <section id="main">
-    <%= @article.content %>
+    <%= markdown(@article.content) %>
   </section>
 
 </div>

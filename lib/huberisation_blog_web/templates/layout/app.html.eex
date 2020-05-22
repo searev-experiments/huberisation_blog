@@ -9,7 +9,7 @@
     <%= csrf_meta_tag() %>
   </head>
   <body>
-    <header class="navbar p-2 p-sticky">
+    <nav class="navbar p-2 p-fixed" id="navbar">
       <section class="navbar-section">
         <a href="/" class="navbar-brand ml-2">Huberisation</a>
       </section>
@@ -23,8 +23,8 @@
           <%= link "Connexion", to: Routes.session_path(@conn, :new), class: "btn" %>
         <% end %>
       </section>
-    </header>
-    <main role="main" class="container" id="content">
+    </nav>
+    <main role="main" id="content">
       <%= if get_flash(@conn, :info) do %>
         <p class="toast toast-success mt-2" role="alert" id="alert-info">
           <%= get_flash(@conn, :info) %>

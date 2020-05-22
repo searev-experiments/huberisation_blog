@@ -6,7 +6,7 @@ config :huberisation_blog, HuberisationBlog.Repo,
   password: "postgres",
   database: "huberisation_blog_dev",
   hostname: "localhost",
-  port: "5433",
+  port: "5432",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
